@@ -6,6 +6,6 @@ else
     aws ecr get-login-password --region "${AWS_DEFAULT_REGION}" "$@" | docker login --username AWS --password-stdin "${ACCOUNT_URL}"
 fi
 IMAGE_AND_TAG=${AWS_RESOURCE_NAME_PREFIX}:${CIRCLE_SHA1}
-docker build -f << parameters.dockerfile >> . -t $IMAGE_AND_TAG
+docker build -f $PARAM_DOCKERFILE . -t $IMAGE_AND_TAG
 docker tag $IMAGE_AND_TAG $ACCOUNT_URL/$IMAGE_AND_TAG
 docker push $ACCOUNT_URL/$IMAGE_AND_TAG
