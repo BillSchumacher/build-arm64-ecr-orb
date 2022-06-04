@@ -8,8 +8,7 @@ parameters:
   tag:
     default: current
     description: >
-      Pick a specific ubuntu 20.04 image variant:
-      https://hub.docker.com/r/ubuntu-2004/tags
+      Pick a specific ubuntu 20.04 image variant
     type: string
   resource_size:
     default: "medium"
