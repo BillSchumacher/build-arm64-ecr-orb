@@ -7,11 +7,15 @@ parameters:
   profile:
     type: string
     default: "default"
-    description: "aws profile"
+    description: "the aws profile."
+  tag-prefix:
+    type: string
+    default: ""
+    description: "a prefix for the docker tag."
   dockerfile:
     type: string
     default: "Dockerfile"
-    description: "the dockerfile"
+    description: "the Dockerfile."
 steps:
   - checkout
   - run:
@@ -21,7 +25,7 @@ steps:
       command: <<include(scripts/configure-aws.sh)>>
   - run:
       name: "Build docker image and push"
-
       environment:
         PARAM_DOCKERFILE: <<parameters.dockerfile>>
+        PARAM_TAG_PREFIX: <<parameters.tag-prefix>>
       command: <<include(scripts/build-and-deploy.sh)>>
