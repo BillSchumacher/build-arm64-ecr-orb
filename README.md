@@ -1,23 +1,14 @@
-# Orb Template
-
+# build-arm64-ecr-orb
 
 [![CircleCI Build Status](https://circleci.com/gh/BillSchumacher/build-arm64-ecr-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/BillSchumacher/build-arm64-ecr-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/billschumacher/build-arm64-ecr-orb.svg)](https://circleci.com/orbs/registry/orb/billschumacher/build-arm64-ecr-orb) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/BillSchumacher/build-arm64-ecr-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
-
-
-A project template for Orbs.
-
-This repository is designed to be automatically ingested and modified by the CircleCI CLI's `orb init` command.
-
-_**Edit this area to include a custom title and description.**_
+See the official ECR orb for setup details. Envvars are required. 
 
 ---
 
 ## Resources
 
 [CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/billschumacher/build-arm64-ecr-orb) - The official registry page of this orb for all versions, executors, commands, and jobs described.
-
-[CircleCI Orb Docs](https://circleci.com/docs/2.0/orb-intro/#section=configuration) - Docs for using, creating, and publishing CircleCI Orbs.
 
 ### How to Contribute
 
