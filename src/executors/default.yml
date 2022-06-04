@@ -17,5 +17,4 @@ parameters:
       
       Must be one of "medium", "large", "xlarge", "2xlarge".
     type: enum
-        type: enum
     enum: ["medium", "large", "xlarge", "2xlarge"]
