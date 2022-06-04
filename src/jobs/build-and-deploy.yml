@@ -20,35 +20,12 @@ steps:
   - checkout
   - run:
       name: "Configure AWS"
-      command: |
-        aws configure set aws_access_key_id \
-            "$AWS_ACCESS_KEY_ID" \
-            --profile "<< parameters.profile >>"
-
-        aws configure set aws_secret_access_key \
-            "$AWS_SECRET_ACCESS_KEY" \
-            --profile "<< parameters.profile >>"
-
-        if [ -n "${AWS_SESSION_TOKEN}" ]; then
-            aws configure set aws_session_token \
-                "${AWS_SESSION_TOKEN}" \
-                --profile "<< parameters.profile >>"
-        fi
-
-        aws configure set default.region "$AWS_DEFAULT_REGION" \
-            --profile "<< parameters.profile >>"
-        aws configure set region "$AWS_DEFAULT_REGION" \
-            --profile "<< parameters.profile >>"
+      environment:
+        PARAM_PROFILE: <<parameters.profile>>
+      command: <<include(scripts/configure-aws.sh)>>
   - run:
       name: "Build docker image and push"
-      command: |
-        ACCOUNT_URL=${AWS_ECR_REGISTRY_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
-        if cat ~/.docker/config.json | grep "${ACCOUNT_URL}" > /dev/null 2>&1 ; then
-            echo "Credential helper is already installed"
-        else
-            aws ecr get-login-password --region "${AWS_DEFAULT_REGION}" "$@" | docker login --username AWS --password-stdin "${ACCOUNT_URL}"
-        fi
-        IMAGE_AND_TAG=${AWS_RESOURCE_NAME_PREFIX}:${CIRCLE_SHA1}
-        docker build -f << parameters.dockerfile >> . -t $IMAGE_AND_TAG
-        docker tag $IMAGE_AND_TAG $ACCOUNT_URL/$IMAGE_AND_TAG
-        docker push $ACCOUNT_URL/$IMAGE_AND_TAG
+
+      environment:
+        PARAM_DOCKERFILE: <<parameters.dockerfile>>
+      command: <<include(scripts/build-and-deploy.sh)>>

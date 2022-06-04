@@ -16,7 +16,8 @@ jobs:
     steps:
       - checkout
       # Run your orb's commands to validate them.
-      - build-arm64-ecr-orb/greet
+      # TODO
+      #- build-arm64-ecr-orb/build-and-deploy
 workflows:
   test-deploy:
     jobs:
