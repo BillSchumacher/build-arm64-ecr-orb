@@ -1,7 +1,7 @@
 version: 2.1
 
 description: >
-  Builds an arm64 docker image, and then pushes the image to aws ecr. 
+  Builds an arm64 docker image, and then pushes the image to aws ecr.
   Requires the aws orbs, probably not ecs but we'll include it for now.
 display:
   home_url: "https://github.com/BillSchumacher/build-arm64-ecr-orb"

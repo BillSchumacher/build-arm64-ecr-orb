@@ -14,7 +14,7 @@ parameters:
     default: "medium"
     description: >
       Pick a specific resource class size:
-      
+
       Must be one of "medium", "large", "xlarge", "2xlarge".
     type: enum
     enum: ["medium", "large", "xlarge", "2xlarge"]
