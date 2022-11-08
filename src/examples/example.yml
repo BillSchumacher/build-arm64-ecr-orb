@@ -3,8 +3,10 @@ description: >
 usage:
   version: 2.1
   orbs:
-    build-arm64-ecr-orb: billschumacher/build-arm64-ecr-orb@0.3.1
+    build-arm64-ecr: billschumacher/build-arm64-ecr-orb@0.3.2
   workflows:
     use-my-orb:
       jobs:
-        - billschumacher/build-arm64-ecr-orb
+        - build-arm64-ecr-orb/build-and-deploy:
+            tag-prefix: staging.
+            envfile: .env
