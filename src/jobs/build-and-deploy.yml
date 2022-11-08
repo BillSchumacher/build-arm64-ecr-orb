@@ -16,6 +16,10 @@ parameters:
     type: string
     default: "Dockerfile"
     description: "the Dockerfile."
+  envfile:
+    type: string
+    default: ""
+    description: "the .env file."
 steps:
   - checkout
   - run:
@@ -28,4 +32,5 @@ steps:
       environment:
         PARAM_DOCKERFILE: <<parameters.dockerfile>>
         PARAM_TAG_PREFIX: <<parameters.tag-prefix>>
+        PARAM_ENVFILE: <<parameters.envfile>>
       command: <<include(scripts/build-and-deploy.sh)>>
