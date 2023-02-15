@@ -20,8 +20,18 @@ parameters:
     type: string
     default: ""
     description: "the .env file."
+  workspace-path:
+    description: path to the workspace
+    type: string
+    default: ""
 steps:
   - checkout
+  - when:
+      condition: << parameters.workspace-path >>
+      steps:
+        - attach_workspace:
+            # Must be absolute path or relative path from working_directory
+            at: << parameters.workspace-path >>
   - run:
       name: "Configure AWS"
       environment:
