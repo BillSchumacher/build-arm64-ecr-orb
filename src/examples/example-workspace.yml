@@ -10,3 +10,4 @@ usage:
         - build-arm64-ecr-orb/build-and-deploy:
             tag-prefix: staging.
             envfile: .env
+            workspace-path: /tmp/workspace
